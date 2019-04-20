@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<meta name="description" content="">
+  	<meta name="myanza" content="">
+
+	<link href="https://cdn.jsdelivr.net/npm/vuesax/dist/vuesax.css" rel="stylesheet">
+	<title>Reto Facturación</title>
+
+	<link rel="stylesheet" href="../css/template.css">
+
+	<link
+	  rel="stylesheet"
+	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	  crossorigin="anonymous"
+	/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<body id="page-top">
+
+	<nav class="navbar navbar-expand navbar-dark static-top" style="background-color: #20B05B;">
+
+    <a class="navbar-brand mr-1" href="../../../index.html">Retos Bootcamp</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+      <li class="nav-item dropdown no-arrow mx-1 active">
+        <a class="nav-link" href="../../../views/Reto 1/retoCalculadora.html">Reto 1</a>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1 active">
+        <a class="nav-link" href="../../../views/Reto 2/Problema_1_2.html">Reto 2</a>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1 active">
+        <a class="nav-link" href="../../../views/Reto 3/Problema_1_3.html">Reto 3</a>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1 active">
+        <a class="nav-link" href="../../../views/Reto 4/Proyecto_api.html">Reto 4</a>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1 active">
+        <a class="nav-link" href="factura.html">Reto 5</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div id="wrapper">
+
+	<div id="app">
+
+		<div class="container-fluid" style="padding-top: 30px; padding-bottom: 30px">
+
+			<div class="row">
+
+				<div class="col-sm-6">
+
+					<div class="card border-info mb-3">
+						
+						<h1 class="card-header text-white bg-info">Edición de Factura</h1>
+						
+						<div class="card-body">
+
+				    		<div class="invoice">
+
+					            <header>
+					                <div class="row align-items-center">
+					                    <div class="col">
+					                        <a target="_blank">
+					                            <img src="../img/logo_cluster.png" 
+					                            		data-holder-rendered="true" 
+					                            		class="img-fluid"/>
+					                        </a>
+					                    </div>
+					                    <div class="col company-details">
+					                        <h5 class="name" >
+					                            <a target="_blank" href="">
+					                            Centro de desarrollo tecnológico Cluster Creatic
+					                            </a>
+					                        </h5>
+					                        <div style="font-size: 1rem">Calle 20N #7A-34 Barrio Ciudad Jardín - Popayán Colombia</div>
+					                        <div>(+57) 301 791 7388</div>
+					                        <div>academy@clustercreatic.com</div>
+					                    </div>
+					                </div>
+					            </header>
+
+					            <main>
+
+					                <form>
+									  <div class="row">
+									    <h5 class="col-sm-5">FACTURA DE VENTA:</h5>
+									    <label class="col-sm-7">SPI 17890</label>
+									  </div>
+									  <div class="row">
+									    <label class="col-sm-5"><b>Caja No:</b></label>
+									    <label class="col-sm-7">149901</label>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputNombre" class="col-sm-5 col-form-label"><b>Cajero:</b></label>
+									    <div class="col-sm-7">
+									      <input type="text" class="form-control" v-model="nombreVendedorIngresado"placeholder="Ingrese el nombre del vendedor" required>
+									    </div>
+									  </div>
+									</form>
+					                
+					                <h5 class="text-gray-light">CLIENTE:</h5>
+					                <form>
+									  <div class="form-group row">
+									    <label for="inputNombre" class="col-sm-3 col-form-label" style="max-height: 30%;"><b>Nombre:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="nombreClienteIngresado"placeholder="Ingrese el nombre" required>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputDocumento" class="col-sm-3 col-form-label"><b>Documento:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="documentoClienteIngresado" placeholder="Ingrese el documento" required>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputDireccion" class="col-sm-3 col-form-label"><b>Dirección:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="direccionClienteIngresada" placeholder="Ingrese la dirección" required>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="telefonoClienteIngresado" placeholder="Ingrese el teléfono" required>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputFecha" class="col-sm-3 col-form-label"><b>Fecha:</b></label>
+									    <div class="col-sm-9">
+									      <input type="date" class="form-control" 
+									      v-model="fechaFacturaIngresada"
+									      :max="fechaMaxima()" 
+									      required>
+									    </div>
+									  </div>	
+
+									</form>
+
+					                <div class="table-responsive">
+
+					                	<table class="table table-striped">
+								            <thead class="thead-dark">
+								                <tr>
+								                    <th></th>
+								                    <th scope="col" class="text-center">Ref</th>
+								                    <th scope="col" class="text-center">Detalle</th>
+								                    <th scope="col" class="text-center">Precio</th>
+								                    <th scope="col" class="text-center">Cantidad</th>
+								                </tr>
+								            </thead>
+								            <tbody>
+									   			<tr is="componente-item" 
+									   				v-for="producto in productos" 
+									   				:producto="producto">
+									   			</tr>
+									   		</tbody>						            
+								       </table>
+
+		   							</div>					
+
+						        </main>
+
+						     </div>
+
+						</div>
+
+						<div class="card-footer text-white bg-info">
+							<div class="notices">
+			                	<div class="notice">IVA INCLUIDO - REGIMEN COMÚN.</div>
+				            </div>
+						</div>
+
+					</div>
+
+				</div>
+
+					<!--  FIN DE LA PARTE IZQUIERDA  -->
+
+				<div class="col-sm-6">
+
+					<div class="card border-success">
+
+						<h1 class="card-header text-white bg-success">Factura creada</h1>
+						
+						<div class="card-body">
+
+							<div class="invoice">
+				        
+					            <header>
+					                <div class="row align-items-center">
+					                    <div class="col">
+					                        <a target="_blank">
+					                            <img src="../img/logo_cluster.png" 
+					                            		data-holder-rendered="true" 
+					                            		class="img-fluid"/>
+					                        </a>
+					                    </div>
+					                    <div class="col company-details">
+					                        <h5 class="name" >
+					                            <a target="_blank" href="">
+					                            Centro de desarrollo tecnológico Cluster Creatic
+					                            </a>
+					                        </h5>
+					                        <div style="font-size: 1rem">Calle 20N #7A-34 Barrio Ciudad Jardín - Popayán Colombia</div>
+					                        <div>(+57) 301 791 7388</div>
+					                        <div>academy@clustercreatic.com</div>
+					                    </div>
+					                </div>
+					            </header>
+
+			            		<main>
+
+					            	<form>
+									  <div class="row">
+									    <h5 class="col-sm-5">FACTURA DE VENTA:</h5>
+									    <label class="col-sm-7">SPI 17890</label>
+									  </div>
+									  <div class="row">
+									    <label class="col-sm-5"><b>Caja No:</b></label>
+									    <label class="col-sm-7">149901</label>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputNombre" class="col-sm-5 col-form-label"><b>Cajero:</b></label>
+									    <div class="col-sm-7">
+									      <input type="text" class="form-control" v-model="nombreVendedorIngresado" readonly>
+									    </div>
+									  </div>
+									</form>
+			                
+			                		<h5 class="text-gray-light">CLIENTE:</h5>
+					                <form>
+									  <div class="form-group row">
+									    <label for="inputNombre" class="col-sm-3 col-form-label"><b>Nombre:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="nombreClienteIngresado" readonly
+									      >
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputDocumento" class="col-sm-3 col-form-label"><b>Documento:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="documentoClienteIngresado"readonly>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputDireccion" class="col-sm-3 col-form-label"><b>Dirección:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="direccionClienteIngresada" readonly>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputTelefono" class="col-sm-3 col-form-label"><b>Telefono:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="telefonoClienteIngresado" readonly>
+									    </div>
+									  </div>
+									  <div class="form-group row">
+									    <label for="inputFecha" class="col-sm-3 col-form-label"><b>Fecha:</b></label>
+									    <div class="col-sm-9">
+									      <input type="text" class="form-control" v-model="fechaFacturaIngresada" readonly>
+									    </div>
+									  </div>	
+
+									</form>
+
+									<div class="table-responsive">
+
+										<table class="table table-striped">
+								            <thead class="thead-dark">
+								                <tr>
+								                    <th scope="col" class="text-center">Ref</th>
+								                    <th scope="col" class="text-center">Detalle</th>
+								                    <th scope="col" class="text-center">Precio</th>
+								                    <th scope="col" class="text-center">Cantidad</th>
+								                    <th scope="col" class="text-center">Total</th>
+								                </tr>
+								            </thead>
+								            <tbody>
+									   			<tr is="componente-seleccionado" 
+									   				v-for="producto in productosSeleccionados" 
+									   				:producto="producto">
+									   			</tr>
+									   		</tbody>
+									   		<tfoot>
+								                <tr>					                            
+								                    <td colspan="2"></td>
+								                    <td colspan="2">SUBTOTAL</td>
+								                    <td>{{ getSubtotal | toCurrency }}</td>
+								                </tr>
+								                <tr>
+								                    <td colspan="2"></td>
+								                    <td colspan="2">IVA 19%</td>
+								                    <td>{{ getIVA | toCurrency }}</td>
+								                </tr>
+								                <tr>
+								                    <td colspan="2"></td>
+								                    <td colspan="2">TOTAL</td>
+								                    <td>{{ getTotal | toCurrency }}</td>
+								                </tr>
+								            </tfoot>						            
+								       </table>	
+
+   									</div>
+
+								</main>
+
+				        	</div>
+
+				        </div>
+
+				        <div class="card-footer text-white bg-success">
+							<div class="notices">
+			                	<div class="notice">IVA INCLUIDO - REGIMEN COMÚN.</div>
+				            </div>
+						</div>
+
+				    </div>
+
+				</div>
+
+				<!--  FIN DE LA PARTE DERECHA  -->
+
+			</div>
+
+		</div>
+
+	</div>
+
+  </div>
+
+   <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuesax/dist/vuesax.umd.js"></script>
+	<script src="../js/factura.js"></script>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.js"
+	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	  crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+</body>
+</html>
